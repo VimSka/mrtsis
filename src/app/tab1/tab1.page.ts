@@ -7,28 +7,28 @@ import { DataServiceService } from '../_shared/services';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  coordinates: any;
+  data: any;
+  longitude: number;
+  latitude: number;
 
   constructor(
     private dataService: DataServiceService
   ) { }
 
-  ionViewWillEnter() {
+  async ionViewWillEnter(): Promise<void> {
     //calls function below whenever page is loaded
-    this.getData();
-    console.log(this.coordinates);
+    await this.getData();
+    // console.log(this.longitude);
+    // console.log(this.latitude);
   }
-
-  // //OLD IONVIEWWILLENTER CODE
-  // async ionViewWillEnter(): Promise<void> {
-  //   //calls function below whenever page is loaded
-  //   await this.getData();
-  //   console.log(this.coordinates);
-  // }
 
   async getData(): Promise<void> {
     //puts data returned from sql to coordinates var
-    this.coordinates = JSON.stringify(await this.dataService.getData());
+    this.data = await this.dataService.getData();
+
+    //change slice range when payload is finalized
+    this.longitude = parseFloat(JSON.stringify(this.data).slice(105,115));
+    this.latitude = parseFloat(JSON.stringify(this.data).slice(90,99));
   }
 
 }
