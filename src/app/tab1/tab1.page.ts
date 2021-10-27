@@ -7,19 +7,28 @@ import { DataServiceService } from '../_shared/services';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  data: any;
+  coordinates: any;
 
   constructor(
     private dataService: DataServiceService
-  ) {}
+  ) { }
 
-  async ionViewWillEnter(): Promise<void> {
-    await this.getData();
-    console.log(this.data);
+  ionViewWillEnter() {
+    //calls function below whenever page is loaded
+    this.getData();
+    console.log(this.coordinates);
   }
 
+  // //OLD IONVIEWWILLENTER CODE
+  // async ionViewWillEnter(): Promise<void> {
+  //   //calls function below whenever page is loaded
+  //   await this.getData();
+  //   console.log(this.coordinates);
+  // }
+
   async getData(): Promise<void> {
-    this.data = await this.dataService.getData();
+    //puts data returned from sql to coordinates var
+    this.coordinates = JSON.stringify(await this.dataService.getData());
   }
 
 }

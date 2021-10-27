@@ -16,9 +16,9 @@ export class DataServiceService {
         Authorization: `Bearer 85249bc3b5867ac9a9eae5b0864529fd`,
       },
       data: {
-        query: "SELECT * FROM test_data2",
+        query: "SELECT coordinates FROM test_data3 ORDER BY createdat DESC LIMIT 1",
       }
     })
-    return Promise.resolve(response)
+    return Promise.resolve(response.data)
   }
 }

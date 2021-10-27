@@ -13,7 +13,15 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-progress-meter ion-align="center"></app-progress-meter>
+<!--
+  <app-progress-meter [coordinates]="coordinates"></app-progress-meter>
+-->
+
+  <ion-card>
+      <ion-text>
+        {{coordinates}}
+      </ion-text>
+  </ion-card>
 
   <!--<app-explore-container name="Tab 1 page"></app-explore-container>-->
 </ion-content>

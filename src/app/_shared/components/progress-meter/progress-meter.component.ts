@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { DataServiceService } from '../../services';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-progress-meter',
@@ -7,19 +6,13 @@ import { DataServiceService } from '../../services';
   styleUrls: ['./progress-meter.component.scss'],
 })
 export class ProgressMeterComponent implements OnInit {
-  data: any;
+  @Input()
+  coordinates: any;
 
-  constructor(
-    private dataService: DataServiceService
-  ) { }
+  constructor() { }
 
   async ngOnInit(): Promise<void> {
-    await this.getData();
-    console.log(this.data);
-  }
-
-  async getData(): Promise<void> {
-    this.data = await this.dataService.getData();
+    console.log(this.coordinates);
   }
 
 }
