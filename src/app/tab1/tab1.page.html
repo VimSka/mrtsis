@@ -18,13 +18,28 @@
 -->
 
   <ion-card>
-      <ion-text>
-        Longitude: {{longitude}}
+      <ion-title>
+        Komi Coordinates
+        <br>
+        Longitude: {{komiLong}}
         <br>
         <br>
-        Latitude: {{latitude}}
-      </ion-text>
+        Latitude: {{komiLat}}
+      </ion-title>
+      <ion-progress-bar value={{komiPerc}}></ion-progress-bar>
   </ion-card>
+
+  <ion-card>
+    <ion-title>
+      Toshio Coordinates
+      <br>
+      Longitude: {{toshioLong}}
+      <br>
+      <br>
+      Latitude: {{toshioLat}}
+    </ion-title>
+    <ion-progress-bar value={{toshioPerc}}></ion-progress-bar>
+</ion-card>
 
   <!--<app-explore-container name="Tab 1 page"></app-explore-container>-->
 </ion-content>

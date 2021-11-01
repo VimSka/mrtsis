@@ -21,4 +21,5 @@ export class DataServiceService {
     })
     return Promise.resolve(response.data)
   }
+
 }
