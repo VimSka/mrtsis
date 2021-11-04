@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true"> <!--style="background-color: --ion-color-warning;"-->
   <ion-toolbar>
     <ion-title>
       Home Page
@@ -7,40 +7,28 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-<!--
-  <app-progress-meter [coordinates]="coordinates"></app-progress-meter>
--->
-
-  <ion-card>
-      <ion-title>
-        Komi Coordinates
-        <br>
-        Longitude: {{komiLong}}
-        <br>
-        <br>
-        Latitude: {{komiLat}}
-      </ion-title>
+  <ion-card style="background-color:#2b2b2b;">
+    <ion-card-header>
+      <ion-card-title style="color:#C2F412">Komi</ion-card-title>
+      <ion-card-subtitle style="color:white">Coordinates</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content style="color:white">
+      Longitude: {{komiLong}} ; Latitude: {{komiLat}}
       <ion-progress-bar value={{komiPerc}}></ion-progress-bar>
+    </ion-card-content>
   </ion-card>
 
-  <ion-card>
-    <ion-title>
-      Toshio Coordinates
-      <br>
-      Longitude: {{toshioLong}}
-      <br>
-      <br>
-      Latitude: {{toshioLat}}
-    </ion-title>
-    <ion-progress-bar value={{toshioPerc}}></ion-progress-bar>
-</ion-card>
+  <ion-card style="background-color:#2b2b2b;">
+    <ion-card-header>
+      <ion-card-title style="color:#C2F412">Toshio</ion-card-title>
+      <ion-card-subtitle style="color:white">Coordinates</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content style="color:white">
+      Longitude: {{toshioLong}} ; Latitude: {{toshioLat}}
+      <ion-progress-bar value={{toshioPerc}}></ion-progress-bar>
+    </ion-card-content>
+  </ion-card>
 
   <!--<app-explore-container name="Tab 1 page"></app-explore-container>-->
 </ion-content>
-

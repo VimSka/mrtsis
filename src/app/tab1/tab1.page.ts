@@ -39,7 +39,7 @@ export class Tab1Page {
       this.komiLat = parseFloat(JSON.stringify(this.data).slice(287, 296));
       this.komiLong = parseFloat(JSON.stringify(this.data).slice(296, 306));
       console.log("komi is at " + this.komiLat + " , " + this.komiLong);
-      this.komiDist = this.distanceFunc(this.komiLat, this.komiLong, 14, 121);
+      this.komiDist = this.distanceFunc(this.komiLat, this.komiLong, 14, 121); //change start/dest coords
       this.komiPerc = 1-(this.komiDist/100);
       console.log("komi distance from dest is "+this.komiDist)
       console.log("komi percentage is "+this.komiPerc);
@@ -48,7 +48,7 @@ export class Tab1Page {
       this.toshioLat = parseFloat(JSON.stringify(this.data).slice(287, 296));
       this.toshioLong = parseFloat(JSON.stringify(this.data).slice(296, 306));
       console.log("toshio is at " + this.toshioLat + " , " + this.toshioLong);
-      this.toshioDist = this.distanceFunc(this.toshioLat, this.toshioLong, 14, 121);
+      this.toshioDist = this.distanceFunc(this.toshioLat, this.toshioLong, 14, 121); //change start/dest coords
       this.toshioPerc = 1-(this.toshioDist/100);
       console.log("toshio distance from dest is "+this.toshioDist);
       console.log("toshio percentage is "+this.toshioPerc);
