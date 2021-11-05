@@ -1,17 +1,34 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true"> <!--style="background-color: --ion-color-warning;"-->
   <ion-toolbar>
     <ion-title>
-      MRT Tracker
+      Node Tracking
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-card style="background-color:#121212;">
+    <ion-card-header>
+      <ion-card-title style="color:#DDF312">Komi</ion-card-title>
+      <ion-card-subtitle style="color:#B3BABF">Coordinates</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content style="color: white">
+      Longitude: {{komiLong}} ; Latitude: {{komiLat}}
+      <ion-progress-bar value={{komiPerc}}></ion-progress-bar>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card style="background-color:#121212;">
+    <ion-card-header>
+      <ion-card-title style="color:#DDF312">Toshio</ion-card-title>
+      <ion-card-subtitle style="color: #B3BABF">Coordinates</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content style="color:white">
+      Longitude: {{toshioLong}} ; Latitude: {{toshioLat}}
+      <ion-progress-bar value={{toshioPerc}}></ion-progress-bar>
+    </ion-card-content>
+  </ion-card>
+
+  <!--<app-explore-container name="Tab 1 page"></app-explore-container>-->
 </ion-content>

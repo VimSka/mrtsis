@@ -1,32 +1,40 @@
-<ion-header [translucent]="true"> <!--style="background-color: --ion-color-warning;"-->
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Home Page
+      MRT Stations
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
-  <ion-card style="background-color:#2b2b2b;">
+  <ion-card style="background-color:#121212;">
     <ion-card-header>
-      <ion-card-title style="color:#C2F412">Komi</ion-card-title>
-      <ion-card-subtitle style="color:white">Coordinates</ion-card-subtitle>
+      <ion-card-title style="color:#DDF312">Station 1</ion-card-title>
+      <ion-card-subtitle *ngIf="station1transit && !loadingDisp1">In Transit</ion-card-subtitle>
+      <ion-card-subtitle *ngIf="!station1transit" style="color: #50C8FF">Arrived</ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content style="color:white">
-      Longitude: {{komiLong}} ; Latitude: {{komiLat}}
-      <ion-progress-bar value={{komiPerc}}></ion-progress-bar>
+    <ion-card-content *ngIf="loadingDisp1"><h2>Awaiting Data...</h2></ion-card-content>
+    <ion-card-content style="color:#ffffff" *ngIf="!loadingDisp1">
+      <ion-progress-bar value={{station1Perc}}></ion-progress-bar>
+      <br>
+      <h2 *ngIf="station1transit" style="color: white">{{Percentage1}}%</h2>
+      <ion-icon *ngIf="!station1transit" name="checkmark-circle-outline" style="zoom:1.5;"></ion-icon>
     </ion-card-content>
   </ion-card>
 
-  <ion-card style="background-color:#2b2b2b;">
+  <ion-card style="background-color:#121212;">
     <ion-card-header>
-      <ion-card-title style="color:#C2F412">Toshio</ion-card-title>
-      <ion-card-subtitle style="color:white">Coordinates</ion-card-subtitle>
+      <ion-card-title style="color:#DDF312">Station 2</ion-card-title>
+      <ion-card-subtitle *ngIf="station2transit && !loadingDisp2">In Transit</ion-card-subtitle>
+      <ion-card-subtitle *ngIf="!station2transit" style="color:#50C8FF">Arrived</ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content style="color:white">
-      Longitude: {{toshioLong}} ; Latitude: {{toshioLat}}
-      <ion-progress-bar value={{toshioPerc}}></ion-progress-bar>
+    <ion-card-content *ngIf="loadingDisp2"><h2>Awaiting Data...</h2></ion-card-content>
+    <ion-card-content style="color:#ffffff" *ngIf="!loadingDisp2">
+      <ion-progress-bar value={{station2Perc}}></ion-progress-bar>
+      <br>
+      <h2 *ngIf="station2transit" style="color:white">{{Percentage2}}%</h2>
+      <ion-icon *ngIf="!station2transit" name="checkmark-circle-outline" style="zoom:1.5;"></ion-icon>
     </ion-card-content>
   </ion-card>
 
