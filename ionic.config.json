@@ -1,7 +1,8 @@
 {
   "name": "mrtsis",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }
