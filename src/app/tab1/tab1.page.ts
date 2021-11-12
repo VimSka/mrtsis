@@ -201,11 +201,11 @@ export class Tab1Page {
   station2CompareDist() {
     if (this.data.slice(20, 21) == "K") {
       this.komiDist1 = 200;
-      this.komiDist2 = this.distanceFunc(this.station2Lat, this.station2Long, 14.564499, 121.096908);
+      this.komiDist2 = this.distanceFunc(this.station2Lat, this.station2Long, 14.564529, 121.096972);
     }
     else if (this.data.slice(20, 21) == "T") {
       this.toshioDist1 = 200;
-      this.toshioDist2 = this.distanceFunc(this.station2Lat, this.station2Long, 14.564499, 121.096908);
+      this.toshioDist2 = this.distanceFunc(this.station2Lat, this.station2Long, 14.564529, 121.096972);
     }
     //compares distances and sets nearest node for progress bar
     if (this.komiDist2 <= this.toshioDist2) {
