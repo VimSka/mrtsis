@@ -95,7 +95,7 @@ export class Tab1Page {
       //STATION 1 lost from the start
       else if (this.data.slice(0, 1) == 0 && this.station1Dist == undefined) {
         console.log("station 1 lost from start");
-        this.station1Dist = 0.107;  //REVIEW CODE !!!! <<
+        this.station1Dist = 0.09730;  //REVIEW CODE !!!! <<
         this.station1Dist = this.station1Dist - (5 / 3600); //5km/h in km/s
         this.station1Function();
         console.log("station1 distance from dest is " + this.station1Dist)
@@ -103,7 +103,7 @@ export class Tab1Page {
       //STATION 2 lost from the start
       else if (this.data.slice(0, 1) == 1 && this.station2Dist == undefined) {
         console.log("station 2 lost from start");
-        this.station2Dist = 0.107;  //REVIEW CODE !!!! <<
+        this.station2Dist = 0.09730;  //REVIEW CODE !!!! <<
         this.station2Dist = this.station2Dist - (5 / 3600);
         this.station2Function();
         console.log("station2 distance from dest is " + this.station2Dist);
@@ -138,7 +138,7 @@ export class Tab1Page {
 
   //-------------Common functions--------------------//
   station1Function() {
-    this.station1Perc = 1 - (this.station1Dist / 0.10778681124005579); //denominator is distance from other station
+    this.station1Perc = 1 - (this.station1Dist / 0.09730); //denominator is distance from other station
     this.Percentage1 = Math.round(this.station1Perc * 100);
     //prevents undershoot, no need for overshoot because of allowance
     if (this.Percentage1 <= 5) { //prevents from immediately becoming greater than 0% after switching bit
@@ -159,7 +159,7 @@ export class Tab1Page {
   }
 
   station2Function() {
-    this.station2Perc = 1 - (this.station2Dist / 0.10778681124005579); //denominator is distance from other station
+    this.station2Perc = 1 - (this.station2Dist / 0.09730); //denominator is distance from other station
     this.Percentage2 = Math.round(this.station2Perc * 100);
     //prevents undershoot
     if (this.Percentage2 <= 5) {
