@@ -1,4 +1,5 @@
-<ion-header [translucent]="true"> <!--style="background-color: --ion-color-warning;"-->
+<ion-header [translucent]="true">
+  <!--style="background-color: --ion-color-warning;"-->
   <ion-toolbar>
     <ion-title>
       Node Tracking
@@ -8,27 +9,126 @@
 
 <ion-content [fullscreen]="true">
 
+<ion-card style="background-color: #121212">
+  <ion-card-header>
+    <ion-card-title style="color:#DDF312;">Overview</ion-card-title>
+    <ion-card-subtitle style="color: #B3BABF">Node Tracking</ion-card-subtitle>
+  </ion-card-header>
+  <!--station indicators-->
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="container1" style="color: white">Station 1</div>
+      </ion-col>
+      <ion-col>
+        <div class="container2" style="color: white">Station 2</div>
+      </ion-col>
+      <ion-col>
+        <div class="container3" style="color: white">Station 3</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="container1"><ion-icon name="location-outline" size="large"></ion-icon></div>
+      </ion-col>
+      <ion-col>
+        <div class="container2"><ion-icon name="location-outline" size="large"></ion-icon></div>
+      </ion-col>
+      <ion-col>
+        <div class="container3"><ion-icon name="location-outline" size="large"></ion-icon></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!--bar-->
+    <div class="track">
+      <!--station markers-->
+      <div class="dot">
+        <div class="stationDotInner" style="opacity: 1; transform: scale(1);"></div>
+      </div>
+      <div class="dot" style="left: 50%">
+        <div class="stationDotInner" style="opacity: 1; transform: scale(1)"></div>
+      </div>
+      <div class="dot" style="left: 100%">
+        <div class="stationDotInner" style="opacity: 1; transform: scale(1);"></div>
+      </div>
+      <!--node markers-->
+      <div class="dot" *ngIf="komiDisp" [ngStyle]="{'left': komiDotPosition}">
+        <div class="komiDotInner" style="opacity: 1; transform: scale(1);"></div>
+      </div>
+      <div class="dot" style="left: 5%">
+        <div class="toshioDotInner" style="opacity: 1; transform: scale(1);"></div>
+      </div>      
+    </div>
+  <br>
+  <!--legend-->
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-text style="color: #B3BABF">Legend</ion-text>
+        <br>
+      </ion-row>
+      <ion-row>
+        <div class="komiDotLegend"></div><ion-col style="color: white">Komi</ion-col>
+        <ion-col>{{komiSpeed}} km/h</ion-col><ion-col></ion-col>
+        <br>
+    </ion-row>
+      <ion-row>
+          <div class="toshioDotLegend"></div><ion-col style="color: white">Toshio</ion-col>
+          <ion-col>{{toshioSpeed}} km/h</ion-col><ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
+
   <ion-card style="background-color:#121212;">
-    <ion-card-header>
-      <ion-card-title style="color:#DDF312">Komi</ion-card-title>
-      <ion-card-subtitle style="color:#B3BABF">Coordinates</ion-card-subtitle>
-    </ion-card-header>
     <ion-card-content style="color: white">
-      Longitude: {{komiLong}} ; Latitude: {{komiLat}}
-      <ion-progress-bar value={{komiPerc}}></ion-progress-bar>
+      <ion-grid>
+        <ion-row>
+          <ion-col><ion-text style="color: white">Stations</ion-text></ion-col>
+          <ion-col><ion-text style="color: white">Distance</ion-text></ion-col>
+          <ion-col><ion-text style="color: white">ETA</ion-text></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <h2 style="color:#DDF312">Station 1</h2>
+            <ion-card-subtitle>{{station1Sub}}</ion-card-subtitle>
+          </ion-col>
+          <ion-col>
+            <h3>55m away</h3>
+          </ion-col>
+          <ion-col>
+
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <h2 style="color:#DDF312">Station 2</h2>
+            <ion-card-subtitle>{{station2Sub}}</ion-card-subtitle>
+          </ion-col>
+          <ion-col>
+            <h3>Arrived</h3>
+          </ion-col>
+          <ion-col>
+
+          </ion-col>
+        </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <h2 style="color:#DDF312">Station 3</h2>
+          <ion-card-subtitle>{{station3Sub}}</ion-card-subtitle>
+        </ion-col>
+        <ion-col>
+          <h3>Awaiting Train</h3>
+        </ion-col>
+        <ion-col>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
     </ion-card-content>
   </ion-card>
 
-  <ion-card style="background-color:#121212;">
-    <ion-card-header>
-      <ion-card-title style="color:#DDF312">Toshio</ion-card-title>
-      <ion-card-subtitle style="color: #B3BABF">Coordinates</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content style="color:white">
-      Longitude: {{toshioLong}} ; Latitude: {{toshioLat}}
-      <ion-progress-bar value={{toshioPerc}}></ion-progress-bar>
-    </ion-card-content>
-  </ion-card>
-
-  <!--<app-explore-container name="Tab 1 page"></app-explore-container>-->
 </ion-content>
