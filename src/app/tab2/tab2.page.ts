@@ -142,6 +142,7 @@ export class Tab2Page {
         this.komiDisp = true;
         this.komiDotPosition = this.komiPerc.toString().concat("%");
         console.log(this.komiStatus);
+        console.log(this.komiDotPosition);
       }
 
       //TOSHIO
@@ -163,7 +164,7 @@ export class Tab2Page {
           }
           else if (this.toshioDist > 0.009 && this.toshioDist <= 0.05388) { //transit to s2
             this.toshioTransit = true;
-            this.komiPerc = Math.round(100 * this.toshioDist / this.totalDist)
+            this.toshioPerc = Math.round(100 * this.toshioDist / this.totalDist)
             this.toshioStatus = "T2";
           }
           else if (this.toshioDist > 0.05388 && this.toshioDist <= 0.06288) { //at s2
@@ -204,7 +205,7 @@ export class Tab2Page {
           }
           else if (this.toshioDist > 0.04342 && this.toshioDist < 0.08830) { //transit to s1
             this.toshioTransit = true;
-            this.toshioPerc = Math.round(100 * (1 - (this.komiDist / this.totalDist)));
+            this.toshioPerc = Math.round(100 * (1 - (this.toshioDist / this.totalDist)));
             this.toshioStatus = "T1";
           }
           else if (this.toshioDist >= 0.08830) { //at s1
@@ -218,6 +219,7 @@ export class Tab2Page {
         this.toshioDisp = true;
         this.toshioDotPosition = this.toshioPerc.toString().concat("%");
         console.log(this.toshioStatus);
+        console.log(this.toshioDotPosition);
       }
 
       //-------------STATION SUBTITLE LOGIC----------------
