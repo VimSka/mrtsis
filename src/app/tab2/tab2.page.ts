@@ -217,7 +217,7 @@ export class Tab2Page {
         //publish percentage
         this.toshioDisp = true;
         this.toshioDotPosition = this.toshioPerc.toString().concat("%");
-
+        console.log(this.toshioStatus);
       }
 
       //-------------STATION SUBTITLE LOGIC----------------

@@ -55,7 +55,7 @@
       <div class="dot" *ngIf="komiDisp" [ngStyle]="{'left': komiDotPosition}">
         <div class="komiDotInner" style="opacity: 1; transform: scale(1);"></div>
       </div>
-      <div class="dot" style="left: 5%">
+      <div class="dot" *ngIf="toshioDisp" [ngStyle]="{'left': toshioDotPosition}">
         <div class="toshioDotInner" style="opacity: 1; transform: scale(1);"></div>
       </div>      
     </div>
