@@ -67,7 +67,7 @@ export class Tab2Page {
     console.log(this.data);
     this.tachometerBit = this.data.slice(this.data.length - 2, this.data.length);
 
-    if (this.tachometerBit > 0 && this.data.length > 5) {
+    if (this.tachometerBit >= 0 && this.data.length > 5) {
       //KOMI
       if (this.data.slice(this.data.length - 3, this.data.length - 2) == "K") {
         console.log("Komi packet received");
@@ -76,7 +76,7 @@ export class Tab2Page {
         this.komiSpeed = parseFloat(this.data.slice(this.data.length - 2, this.data.length));
         console.log("komi coordinates are " + this.komiLat + " and " + this.komiLong);
 
-        if (this.data.slice(0, 1) == 0) { //if komi is going right
+        if (this.data.slice(0, 1) == 1) { //if komi is going right
           this.komiDist = this.haversineFunction(this.komiLat, this.komiLong, this.station1Lat, this.station1Long);
           console.log("komi is going right, distance from s1 is " + this.komiDist);
           //percentages and progress
@@ -107,7 +107,7 @@ export class Tab2Page {
           }
         }
 
-        else if (this.data.slice(0, 1) == 1) { //if komi is going left
+        else if (this.data.slice(0, 1) == 0) { //if komi is going left
           this.komiDist = this.haversineFunction(this.komiLat, this.komiLong, this.station3Lat, this.station3Long);
           console.log("komi is going left, distance from s3 is " + this.komiDist);
           //percentages and progress
@@ -141,7 +141,7 @@ export class Tab2Page {
         //publish percentage
         this.komiDisp = true;
         this.komiDotPosition = this.komiPerc.toString().concat("%");
-
+        console.log(this.komiStatus);
       }
 
       //TOSHIO
@@ -152,7 +152,7 @@ export class Tab2Page {
         this.toshioSpeed = parseFloat(this.data.slice(this.data.length - 2, this.data.length));
         console.log("toshio coordinates are " + this.toshioLat + " and " + this.toshioLong);
 
-        if (this.data.slice(0, 1) == 0) { //if toshio is going right
+        if (this.data.slice(0, 1) == 1) { //if toshio is going right
           this.toshioDist = this.haversineFunction(this.toshioLat, this.toshioLong, this.station1Lat, this.station1Long);
           console.log("toshio is going right, distance from s1 is " + this.toshioDist);
           //percentages and progress
@@ -183,7 +183,7 @@ export class Tab2Page {
           }
         }
 
-        else if (this.data.slice(0, 1) == 1) { //if toshio is going left
+        else if (this.data.slice(0, 1) == 0) { //if toshio is going left
           this.toshioDist = this.haversineFunction(this.toshioLat, this.toshioLong, this.station3Lat, this.station3Long);
           console.log("toshio is going left, distance from s3 is " + this.toshioDist);
           //percentages and progress
@@ -275,8 +275,6 @@ export class Tab2Page {
 
 
     }
-
-    console.log(this.komiSpeed+ 10);
 
   }
 
