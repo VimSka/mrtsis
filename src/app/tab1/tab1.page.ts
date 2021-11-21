@@ -11,7 +11,6 @@ export class Tab1Page {
   returnedVal: any;
   data: any;
   dataString: string;
-  tachometerBit: number;
   komiDist1: number = 0.09730;
   toshioDist1: number = 0.09730;
   komiDist2: number = 0.09730;
@@ -42,7 +41,6 @@ export class Tab1Page {
   async getData(): Promise<void> {
     this.returnedVal = await this.dataService.getData();
     this.data = this.returnedVal.feeds[0].field1;
-    this.tachometerBit = 1; //simulates moving train TACHOMETER OUTPUT
     console.log(this.komiDist1);
     console.log(this.komiDist2);
     console.log(this.toshioDist1);
@@ -88,40 +86,39 @@ export class Tab1Page {
     //----------------UNDERGROUND ALGORITHM--------------------------
     else if (this.data.slice(this.data.length - 1, this.data.length) == "1") {
       console.log("underground mode");
-      console.log(this.station1Dist == undefined);
+      console.log(this.station1Dist);
+      console.log(this.station2Dist)
       //STATION 1 lost in between
       if (this.data.slice(0, 1) == 0) {
         console.log("station 1 lost during transit");
-        this.station1Dist = this.station1Dist - (5 / 3600); //5km/h in km/s
+        this.station1Dist = this.station1Dist - this.avgSpeed;
         this.station1Function();
         this.station1DistDisp = Math.round(1000 * (this.station1Dist)).toString().concat("m away");
         this.station1Eta = this.etaFunction(this.station1Dist);
         console.log("station1 distance from dest is " + this.station1Dist);
       }
       //STATION 2 lost in between
-      else if (this.data.slice(0, 1) == 1) {
+      else if (this.data.slice(0, 1) == 1 && this.station2Dist < 0.09730-0.012) {
         console.log("station 2 lost during transit");
-        this.station2Dist = this.station2Dist - (5 / 3600);
+        this.station2Dist = this.station2Dist - this.avgSpeed;
         this.station2Function();
         this.station2DistDisp = Math.round(1000* (this.station2Dist)).toString().concat("m away");
         this.station2Eta = this.etaFunction(this.station2Dist);
         console.log("station2 distance from dest is " + this.station2Dist);
       }
       //STATION 1 lost from the start
-      else if (this.data.slice(0, 1) == 0) {
+      else if (this.data.slice(0, 1) == 0 && this.station1Dist >= 0.09730-0.012) {
         console.log("station 1 lost from start");
-        this.station1Dist = 0.09730;  //REVIEW CODE !!!! <<
-        this.station1Dist = this.station1Dist - (5 / 3600); //5km/h in km/s
+        this.station1Dist = this.station1Dist - this.avgSpeed;
         this.station1Function();
         this.station1DistDisp = Math.round(1000 * (this.station1Dist)).toString().concat("m away");
         this.station1Eta = this.etaFunction(this.station1Dist);
         console.log("station1 distance from dest is " + this.station1Dist)
       }
       //STATION 2 lost from the start
-      else if (this.data.slice(0, 1) == 1) {
+      else if (this.data.slice(0, 1) == 1 && this.station2Dist >= 0.09730-0.012) {
         console.log("station 2 lost from start");
-        this.station2Dist = 0.09730;  //REVIEW CODE !!!! <<
-        this.station2Dist = this.station2Dist - (5 / 3600);
+        this.station2Dist = this.station2Dist - this.avgSpeed;
         this.station2Function();
         this.station2DistDisp = Math.round(1000* (this.station2Dist)).toString().concat("m away");
         this.station2Eta = this.etaFunction(this.station2Dist);
