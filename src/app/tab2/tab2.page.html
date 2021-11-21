@@ -84,20 +84,21 @@
     <ion-card-content style="color: white">
       <ion-grid>
         <ion-row>
-          <ion-col><ion-text style="color: white">Stations</ion-text></ion-col>
-          <ion-col><ion-text style="color: white">Distance</ion-text></ion-col>
-          <ion-col><ion-text style="color: white">ETA</ion-text></ion-col>
+          <ion-col><h3 style="color: white">Stations</h3></ion-col>
+          <ion-col size="5"><h3 style="color: white">Nearest Train</h3></ion-col>
+          <ion-col><h3 style="color: white">ETA</h3></ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <h2 style="color:#DDF312">Station 1</h2>
             <ion-card-subtitle>{{station1Sub}}</ion-card-subtitle>
           </ion-col>
-          <ion-col>
-            <h3>55m away</h3>
+          <ion-col size="5">
+            <ion-row *ngIf="komi1"><h3>{{komiD1}}</h3></ion-row>
+            <ion-row *ngIf="toshio1"><h3>{{toshioD1}}</h3></ion-row>
           </ion-col>
           <ion-col>
-
+            <ion-row *ngIf="etaDisp1"><h3>Next train in {{station1Eta}}</h3></ion-row>
           </ion-col>
         </ion-row>
 
@@ -106,11 +107,12 @@
             <h2 style="color:#DDF312">Station 2</h2>
             <ion-card-subtitle>{{station2Sub}}</ion-card-subtitle>
           </ion-col>
-          <ion-col>
-            <h3>Arrived</h3>
+          <ion-col size="5">
+            <ion-row *ngIf="komi2"><h3>{{komiD2}}</h3></ion-row>
+            <ion-row *ngIf="toshio2"><h3>{{toshioD2}}</h3></ion-row>
           </ion-col>
           <ion-col>
-
+            <ion-row *ngIf="etaDisp2"><h3>Next train in {{station2Eta}}</h3></ion-row>
           </ion-col>
         </ion-row>
 
@@ -119,11 +121,13 @@
           <h2 style="color:#DDF312">Station 3</h2>
           <ion-card-subtitle>{{station3Sub}}</ion-card-subtitle>
         </ion-col>
-        <ion-col>
-          <h3>Awaiting Train</h3>
+        <ion-col size="5">
+          <ion-row *ngIf="komi3"><h3>{{komiD3}}</h3></ion-row>
+          <ion-row *ngIf="toshio3"><h3>{{toshioD3}}</h3></ion-row>
         </ion-col>
         <ion-col>
-          
+          <ion-row *ngIf="etaDisp3"><h3>Next train in {{station3Eta}}</h3></ion-row>
+
         </ion-col>
       </ion-row>
     </ion-grid>
