@@ -102,8 +102,7 @@ export class Tab2Page {
         //publish percentage
         this.komiDisp = true;
         this.komiDotPosition = this.komiPerc.toString().concat("%");
-        console.log(this.komiStatus);
-        console.log(this.komiDotPosition);
+        console.log("Komi status is: "+this.komiStatus+"; Dot: "+this.komiDotPosition+"; Perc: "+this.komiPerc);
       }
 
       //TOSHIO
@@ -129,8 +128,7 @@ export class Tab2Page {
         //publish percentage
         this.toshioDisp = true;
         this.toshioDotPosition = this.toshioPerc.toString().concat("%");
-        console.log(this.toshioStatus);
-        console.log(this.toshioDotPosition);
+        console.log("Toshio status is: "+this.toshioStatus+"; Dot: "+this.toshioDotPosition+"; Perc: "+this.toshioPerc);
       }
 
       //-------------STATION DETAILS LOGIC----------------
