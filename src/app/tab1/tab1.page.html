@@ -23,10 +23,10 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <div class="container1" style="color: white">Station 1</div>
+            <div class="container1" style="color: white">Station 2</div>
           </ion-col>
           <ion-col>
-            <div class="container3" style="color: white">Station 2</div>
+            <div class="container3" style="color: white">Station 1</div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -57,7 +57,8 @@
         </div>
       </div>
       <br>
-      <h2 *ngIf="station1transit" style="color: #b3babf">Nearest Train is {{station1DistDisp}}</h2>
+      <h3 *ngIf="station1transit" style="color: #b3babf">Nearest Train is {{station1DistDisp}}</h3>
+      <h3 *ngIf="station1transit" style="color: #b3babf">ETA: {{station1Eta}}</h3>
       <ion-icon *ngIf="!station1transit" name="checkmark-circle-outline" style="zoom:1.5;"></ion-icon>
     </ion-card-content>
   </ion-card>
@@ -111,7 +112,8 @@
         </div>
       </div>
       <br>
-      <h2 *ngIf="station2transit" style="color:#b3babf">Nearest Train is {{station2DistDisp}}</h2>
+      <h3 *ngIf="station2transit" style="color:#b3babf">Nearest Train is {{station2DistDisp}}</h3>
+      <h3 *ngIf="station2transit" style="color: #b3babf">ETA: {{station2Eta}}</h3>
       <ion-icon *ngIf="!station2transit" name="checkmark-circle-outline" style="zoom:1.5;"></ion-icon>
     </ion-card-content>
   </ion-card>

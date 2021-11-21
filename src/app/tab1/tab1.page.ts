@@ -60,11 +60,11 @@ export class Tab1Page {
         if (this.station1Lat != 0 && this.station1Long != 0) {
           this.station1CompareDist();
           this.station1Function();
-          this.station1Dot = this.station1Perc.toString().concat("%");
+          this.station1Dot = (100*this.station1Perc).toString().concat("%");
           console.log("distance from station1 is " + this.station1Dist)
           this.station1DistDisp = Math.round(1000 * (this.station1Dist)).toString().concat("m away");
           this.station1Eta = this.etaFunction(this.station1Dist);
-          
+          console.log(this.station1Eta);
         }
       }
 
