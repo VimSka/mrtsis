@@ -12,10 +12,10 @@ export class Tab1Page {
   data: any;
   dataString: string;
   tachometerBit: number;
-  komiDist1: number = 200;
-  toshioDist1: number = 200;
-  komiDist2: number = 200;
-  toshioDist2: number = 200;
+  komiDist1: number = 0.09730;
+  toshioDist1: number = 0.09730;
+  komiDist2: number = 0.09730;
+  toshioDist2: number = 0.09730;
   //station1 variables
   station1Long: number; station1Lat: number; station1Dist: number; station1Perc: number; station1transit: boolean = true;
   Percentage1: number; loadingDisp1: boolean = true; station1Speed: number; station1DistDisp: string; station1Eta: string;
@@ -64,14 +64,13 @@ export class Tab1Page {
           console.log("distance from station1 is " + this.station1Dist)
           this.station1DistDisp = Math.round(1000 * (this.station1Dist)).toString().concat("m away");
           this.station1Eta = this.etaFunction(this.station1Dist);
-          console.log(this.station1Eta);
         }
       }
 
       //Station2
       else if (this.data.slice(0, 1) === "1") {
-        this.station2Lat = parseFloat(this.data.slice(1, 10));
-        this.station2Long = parseFloat(this.data.slice(10, 20));
+        this.station2Lat = parseFloat("14.".concat(this.data.slice(1, 7)));
+        this.station2Long = parseFloat("121.".concat(this.data.slice(7, 14)));
         console.log("station2 is at " + this.station2Lat + " , " + this.station2Long);
         this.station2Speed = parseFloat(this.data.slice(this.data.length - 3, this.data.length - 1));
         this.station2SpeedStr = " - Incoming train moving at ".concat(this.station2Speed.toString().concat("km/h"));
@@ -91,7 +90,7 @@ export class Tab1Page {
       console.log("underground mode");
       console.log(this.station1Dist == undefined);
       //STATION 1 lost in between
-      if (this.data.slice(0, 1) == 0 && this.station1Dist != undefined) {
+      if (this.data.slice(0, 1) == 0) {
         console.log("station 1 lost during transit");
         this.station1Dist = this.station1Dist - (5 / 3600); //5km/h in km/s
         this.station1Function();
@@ -100,7 +99,7 @@ export class Tab1Page {
         console.log("station1 distance from dest is " + this.station1Dist);
       }
       //STATION 2 lost in between
-      else if (this.data.slice(0, 1) == 1 && this.station1Dist != undefined) {
+      else if (this.data.slice(0, 1) == 1) {
         console.log("station 2 lost during transit");
         this.station2Dist = this.station2Dist - (5 / 3600);
         this.station2Function();
@@ -109,7 +108,7 @@ export class Tab1Page {
         console.log("station2 distance from dest is " + this.station2Dist);
       }
       //STATION 1 lost from the start
-      else if (this.data.slice(0, 1) == 0 && this.station1Dist == undefined) {
+      else if (this.data.slice(0, 1) == 0) {
         console.log("station 1 lost from start");
         this.station1Dist = 0.09730;  //REVIEW CODE !!!! <<
         this.station1Dist = this.station1Dist - (5 / 3600); //5km/h in km/s
@@ -119,7 +118,7 @@ export class Tab1Page {
         console.log("station1 distance from dest is " + this.station1Dist)
       }
       //STATION 2 lost from the start
-      else if (this.data.slice(0, 1) == 1 && this.station2Dist == undefined) {
+      else if (this.data.slice(0, 1) == 1) {
         console.log("station 2 lost from start");
         this.station2Dist = 0.09730;  //REVIEW CODE !!!! <<
         this.station2Dist = this.station2Dist - (5 / 3600);
@@ -227,11 +226,11 @@ export class Tab1Page {
   //-------------Nearest Node Algorithm--------------//
   station1CompareDist() {
     if (this.data.slice(this.data.length - 4, this.data.length - 3) == "K") {
-      this.komiDist2 = 200;
+      this.komiDist2 = 0.09730;
       this.komiDist1 = this.distanceFunc(this.station1Lat, this.station1Long, 14.564350, 121.097857);
     }
     else if (this.data.slice(this.data.length - 4, this.data.length - 3) == "T") {
-      this.toshioDist2 = 200;
+      this.toshioDist2 = 0.09730;
       this.toshioDist1 = this.distanceFunc(this.station1Lat, this.station1Long, 14.564350, 121.097857);
     }
     //compares distances and sets nearest node for progress bar
@@ -244,12 +243,12 @@ export class Tab1Page {
   }
 
   station2CompareDist() {
-    if (this.data.slice(20, 21) == "K") {
-      this.komiDist1 = 200;
+    if (this.data.slice(this.data.length - 4, this.data.length - 3) == "K") {
+      this.komiDist1 = 0.09730;
       this.komiDist2 = this.distanceFunc(this.station2Lat, this.station2Long, 14.564529, 121.096972);
     }
-    else if (this.data.slice(20, 21) == "T") {
-      this.toshioDist1 = 200;
+    else if (this.data.slice(this.data.length - 4, this.data.length - 3) == "T") {
+      this.toshioDist1 = 0.09730;
       this.toshioDist2 = this.distanceFunc(this.station2Lat, this.station2Long, 14.564529, 121.096972);
     }
     //compares distances and sets nearest node for progress bar
