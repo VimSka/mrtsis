@@ -12,7 +12,7 @@ export class Tab2Page {
   data: any;
   dataString: string;
   tachometerBit: number;
-  algoSelector: number;
+  algoSelector: string;
   //DIRECTION BITS
   komiDest: number; toshioDest: number;
   komiDir: number; toshioDir: number;
@@ -78,7 +78,7 @@ export class Tab2Page {
     console.log(this.data);
     this.algoSelector = this.data.slice(this.data.length - 1, this.data.length);
 
-    if (this.algoSelector == 0) {
+    if (this.algoSelector == "0") {
       //KOMI
       if (this.data.slice(this.data.length - 4, this.data.length - 3) == "K") {
         console.log("Komi packet received");
@@ -403,7 +403,7 @@ export class Tab2Page {
     }
 
     //------------------------UNDERGROUND ALGORITHM--------------------------
-    else if (this.tachometerBit > 0 && this.data.length < 5) {
+    else if (this.algoSelector == "1") {
       console.log("underground algorithm triggered")
 
       //KOMI

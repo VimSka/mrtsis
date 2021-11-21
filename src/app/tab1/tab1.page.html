@@ -8,32 +8,110 @@
 
 <ion-content [fullscreen]="true">
 
+  <!--STATION 1-->
   <ion-card style="background-color:#121212;">
     <ion-card-header>
       <ion-card-title style="color:#DDF312">Station 1</ion-card-title>
-      <ion-card-subtitle *ngIf="station1transit && !loadingDisp1">In Transit</ion-card-subtitle>
+      <ion-card-subtitle *ngIf="station1transit && !loadingDisp1">In Transit{{station1SpeedStr}}</ion-card-subtitle>
       <ion-card-subtitle *ngIf="!station1transit" style="color: #50C8FF">Arrived</ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content *ngIf="loadingDisp1"><h2>Awaiting Data...</h2></ion-card-content>
+    <ion-card-content *ngIf="loadingDisp1">
+      <h2>Awaiting Data...</h2>
+    </ion-card-content>
     <ion-card-content style="color:#ffffff" *ngIf="!loadingDisp1">
-      <ion-progress-bar value={{station1Perc}}></ion-progress-bar>
+      <!--station indicators-->
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div class="container1" style="color: white">Station 1</div>
+          </ion-col>
+          <ion-col>
+            <div class="container3" style="color: white">Station 2</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="container1">
+              <ion-icon name="location-outline" size="large"></ion-icon>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="container3">
+              <ion-icon name="location-outline" size="large"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <!--bar-->
+      <div class="track">
+        <!--station markers-->
+        <div class="dot">
+          <div class="stationDotInner" style="opacity: 1; transform: scale(1);"></div>
+        </div>
+        <div class="dot" style="left: 100%">
+          <div class="stationDotInner" style="opacity: 1; transform: scale(1);"></div>
+        </div>
+        <!--node markers-->
+        <div class="dot" [ngStyle]="{'left': station1Dot}">
+          <div class="toshioDotInner" style="opacity: 1; transform: scale(1);"></div>
+        </div>
+      </div>
       <br>
-      <h2 *ngIf="station1transit" style="color: white">{{Percentage1}}%</h2>
+      <h2 *ngIf="station1transit" style="color: #b3babf">Nearest Train is {{station1DistDisp}}</h2>
       <ion-icon *ngIf="!station1transit" name="checkmark-circle-outline" style="zoom:1.5;"></ion-icon>
     </ion-card-content>
   </ion-card>
 
+  <!--STATION 2-->
   <ion-card style="background-color:#121212;">
     <ion-card-header>
       <ion-card-title style="color:#DDF312">Station 2</ion-card-title>
-      <ion-card-subtitle *ngIf="station2transit && !loadingDisp2">In Transit</ion-card-subtitle>
+      <ion-card-subtitle *ngIf="station2transit && !loadingDisp2">In Transit{{station2SpeedStr}}</ion-card-subtitle>
       <ion-card-subtitle *ngIf="!station2transit" style="color:#50C8FF">Arrived</ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content *ngIf="loadingDisp2"><h2>Awaiting Data...</h2></ion-card-content>
+    <ion-card-content *ngIf="loadingDisp2">
+      <h2>Awaiting Data...</h2>
+    </ion-card-content>
     <ion-card-content style="color:#ffffff" *ngIf="!loadingDisp2">
-      <ion-progress-bar value={{station2Perc}}></ion-progress-bar>
+      <!--station indicators-->
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div class="container1" style="color: white">Station 1</div>
+          </ion-col>
+          <ion-col>
+            <div class="container3" style="color: white">Station 2</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="container1">
+              <ion-icon name="location-outline" size="large"></ion-icon>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="container3">
+              <ion-icon name="location-outline" size="large"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <!--bar-->
+      <div class="track">
+        <!--station markers-->
+        <div class="dot">
+          <div class="stationDotInner" style="opacity: 1; transform: scale(1);"></div>
+        </div>
+        <div class="dot" style="left: 100%">
+          <div class="stationDotInner" style="opacity: 1; transform: scale(1);"></div>
+        </div>
+        <!--node markers-->
+        <div class="dot" [ngStyle]="{'left': station2Dot}">
+          <div class="toshioDotInner" style="opacity: 1; transform: scale(1);"></div>
+        </div>
+      </div>
       <br>
-      <h2 *ngIf="station2transit" style="color:white">{{Percentage2}}%</h2>
+      <h2 *ngIf="station2transit" style="color:#b3babf">Nearest Train is {{station2DistDisp}}</h2>
       <ion-icon *ngIf="!station2transit" name="checkmark-circle-outline" style="zoom:1.5;"></ion-icon>
     </ion-card-content>
   </ion-card>

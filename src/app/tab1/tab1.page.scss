@@ -7,7 +7,129 @@
 .black{
     --color: #000000;
 }
-
+.bar{
+    height: 10px;
+}
+//makeshift track/progress bar classes
+.iconbar{
+    height: 6px;
+    position: relative;
+    outline: none;
+    align-items: center;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 8px;
+    border-radius: 4px;
+}
+.track{
+    height: 6px;
+    position: relative;
+    outline: none;
+    align-items: center;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 2px;
+    background-color: #7c7c7c;
+    border-radius: 4px;
+    left: -2px;
+}
+.dot{
+    position: absolute;
+    display: inline-block;
+    top: -4px;
+}
+.legenddiv{
+    position: relative;
+}
+.komiDotInner{
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ffffff;
+    position: absolute;
+    will-change: opacity, transform;
+    width: 14px;
+    height: 14px;
+    left: -4px;
+    background-color: #FF0000;
+}
+.toshioDotInner{
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ffffff;
+    position: absolute;
+    will-change: opacity, transform;
+    width: 14px;
+    height: 14px;
+    left: -4px;
+    background-color: #3191ff;
+}
+.komiDotLegend{
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ffffff;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    background-color: #FF0000;
+    top: 7px;
+}
+.toshioDotLegend{
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ffffff;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    background-color: #3191ff;
+    top: 7px;
+}
+.stationDotInner{
+    border-radius: 50%;
+    position: absolute;
+    will-change: opacity, transform;
+    width: 14px;
+    height: 14px;
+    left:-4px;
+    background-color: #7c7c7c;
+}
+//general classes
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #000000;
+}
+.container1{
+    display: flex;
+    align-items: flex-end;
+    justify-content: left;
+    overflow: hidden;
+    text-align: left;
+}
+.container2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+}
+.container3{
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
+    overflow: hidden;
+    text-align: right;
+}
+ion-text{
+    color: #B3BABF;
+    font-size: medium;
+}
 ion-icon{
     color: #DDF312;
 }
