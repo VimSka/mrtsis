@@ -79,7 +79,7 @@ export class Tab1Page {
           this.station2Function();
           this.station2Dot = (100*this.station2Perc).toString().concat("%");
           console.log("distance from station2 is " + this.station2Dist);
-          this.station2DistDisp = Math.round(1000* (this.station1Dist)).toString().concat("m away");
+          this.station2DistDisp = Math.round(1000* (this.station2Dist)).toString().concat("m away");
           this.station2Eta = this.etaFunction(this.station2Dist);
         }
       }
