@@ -25,7 +25,7 @@ export class Tab1Page {
   Percentage2: number; loadingDisp2: boolean = true; station2Speed: number; station2DistDisp: string; station2Eta: string;
   station2Dot: string; station2SpeedStr: string;
   //constants
-  avgSpeed: number = 5/3600;
+  avgSpeed: number = 10/3600;
 
   constructor(
     private dataService: ThingspeakDataService
@@ -193,7 +193,7 @@ export class Tab1Page {
       this.loadingDisp1 = false; //not loading
     }
     //controls status display
-    if (this.station1Dist <= 0.009) { //display arrival when distance to station is less than 6m
+    if (this.station1Dist <= 0.012) { //display arrival when distance to station is less than 6m
       this.station1transit = false; //not in transit
       this.station1Perc = 1;
     }
@@ -214,7 +214,7 @@ export class Tab1Page {
       this.loadingDisp2 = false;
     }
     //controls status display
-    if (this.station2Dist <= 0.009) {
+    if (this.station2Dist <= 0.012) {
       this.station2transit = false;
       this.station2Perc = 1;
     }
