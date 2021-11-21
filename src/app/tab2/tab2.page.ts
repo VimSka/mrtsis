@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ThingspeakDataService } from '../_shared/services';
 import { interval } from 'rxjs';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-tab2',
@@ -38,7 +37,10 @@ export class Tab2Page {
   komiStatus: string; toshioStatus: string;
   station1Sub: string; station2Sub: string; station3Sub: string;
   //ETA VARIABLES
-  station1Eta: string; station2Eta: string; station3Eta: string;
+  station1EtaK: string; station2EtaK: string; station3EtaK: string;
+  station1EtaT: string; station2EtaT: string; station3EtaT: string;
+  komiEtaDisp1: boolean = false; komiEtaDisp2: boolean = false; komiEtaDisp3: boolean = false;
+  toshioEtaDisp1: boolean = false; toshioEtaDisp2: boolean = false; toshioEtaDisp3: boolean = false;
   etaDisp1: boolean = false; etaDisp2: boolean = false; etaDisp3: boolean = false;
   //PERCENTAGE VARIABLES
   komiPerc: number; toshioPerc: number;
@@ -96,6 +98,7 @@ export class Tab2Page {
             this.komi1 = true;
             this.komi2 = false;
             this.komi3 = false;
+            this.komiEtaDisp1 = false;
             this.komiD1 = "Komi has arrived"
           }
           else if (this.komiDist > 0.009 && this.komiDist <= 0.05388) { //transit to s2
@@ -105,7 +108,9 @@ export class Tab2Page {
             this.komi1 = false;
             this.komi2 = true;
             this.komi3 = false;
+            this.komiEtaDisp2 = true;
             this.komiD2 = "Komi is ".concat(Math.round(1000 * (0.058388 - this.komiDist)).toString().concat("m away"));
+            this.station2EtaK = this.etaFunction(0.05838 - this.komiDist);
           }
           else if (this.komiDist > 0.05388 && this.komiDist <= 0.06288) { //at s2
             this.komiTransit = false;
@@ -114,6 +119,7 @@ export class Tab2Page {
             this.komi1 = false;
             this.komi2 = true;
             this.komi3 = false;
+            this.komiEtaDisp2 = false;
             this.komiD2 = "Komi has arrived";
           }
           else if (this.komiDist > 0.06288 && this.komiDist < 0.08830) { //transit to s3
@@ -123,7 +129,9 @@ export class Tab2Page {
             this.komi1 = false;
             this.komi2 = false;
             this.komi3 = true;
+            this.komiEtaDisp3 = true;
             this.komiD3 = "Komi is ".concat(Math.round(1000 * (this.totalDist - this.komiDist)).toString().concat("m away"));
+            this.station3EtaK = this.etaFunction(0.09730 - this.komiDist);
           }
           else if (this.komiDist >= 0.08830) {
             this.komiTransit = false;
@@ -132,6 +140,7 @@ export class Tab2Page {
             this.komi1 = false;
             this.komi2 = false;
             this.komi3 = true;
+            this.komiEtaDisp3 = false;
             this.komiD3 = "Komi has arrived";
           }
         }
@@ -147,6 +156,7 @@ export class Tab2Page {
             this.komi1 = false;
             this.komi2 = false;
             this.komi3 = true;
+            this.komiEtaDisp3 = false;
             this.komiD3 = "Komi has arrived"
           }
           else if (this.komiDist > 0.009 && this.komiDist <= 0.03442) { //transit to s2
@@ -156,7 +166,9 @@ export class Tab2Page {
             this.komi1 = false;
             this.komi2 = true;
             this.komi3 = false;
+            this.komiEtaDisp2 = true;
             this.komiD2 = "Komi is ".concat(Math.round(1000 * (0.03892 - this.komiDist)).toString().concat("m away"));
+            this.station2EtaK = this.etaFunction(0.03892 - this.komiDist);
           }
           else if (this.komiDist > 0.03442 && this.komiDist <= 0.04342) { //at s2
             this.komiTransit = false;
@@ -165,6 +177,7 @@ export class Tab2Page {
             this.komi1 = false;
             this.komi2 = true;
             this.komi3 = false;
+            this.komiEtaDisp2 = false;
             this.komiD2 = "Komi has arrived";
           }
           else if (this.komiDist > 0.04342 && this.komiDist < 0.08830) { //transit to s1
@@ -174,7 +187,9 @@ export class Tab2Page {
             this.komi1 = true;
             this.komi2 = false;
             this.komi3 = false;
+            this.komiEtaDisp1 = true;
             this.komiD1 = "Komi is ".concat(Math.round(1000 * (this.totalDist - this.komiDist)).toString().concat("m away"));
+            this.station1EtaK = this.etaFunction(0.09730 - this.komiDist);
           }
           else if (this.komiDist >= 0.08830) { //at s1
             this.komiTransit = false;
@@ -183,6 +198,7 @@ export class Tab2Page {
             this.komi1 = true;
             this.komi2 = false;
             this.komi3 = false;
+            this.komiEtaDisp1 = false;
             this.komiD1 = "Komi has arrived"
           }
         }
@@ -210,9 +226,10 @@ export class Tab2Page {
             this.toshioTransit = false;
             this.toshioPerc = 0;
             this.toshioStatus = "A1";
-            this.toshio1 = true;
+            this.toshio1 = true;  
             this.toshio2 = false;
             this.toshio3 = false;
+            this.toshioEtaDisp1 = false;
             this.toshioD1 = "Toshio has arrived"
           }
           else if (this.toshioDist > 0.009 && this.toshioDist <= 0.05388) { //transit to s2
@@ -222,7 +239,9 @@ export class Tab2Page {
             this.toshio1 = false;
             this.toshio2 = true;
             this.toshio3 = false;
+            this.toshioEtaDisp2 = true;
             this.toshioD2 = "Toshio is ".concat(Math.round(1000 * (0.05838 - this.komiDist)).toString().concat("m away"));
+            this.station2EtaT = this.etaFunction(0.05838 - this.toshioDist);
           }
           else if (this.toshioDist > 0.05388 && this.toshioDist <= 0.06288) { //at s2
             this.toshioTransit = false;
@@ -231,6 +250,7 @@ export class Tab2Page {
             this.toshio1 = false;
             this.toshio2 = true;
             this.toshio3 = false;
+            this.toshioEtaDisp2 = false;
             this.toshioD2 = "Toshio has arrived"
           }
           else if (this.toshioDist > 0.06288 && this.toshioDist < 0.08830) { //transit to s3
@@ -240,7 +260,9 @@ export class Tab2Page {
             this.toshio1 = false;
             this.toshio2 = false;
             this.toshio3 = true;
+            this.toshioEtaDisp3 = true;
             this.toshioD3 = "Toshio is ".concat(Math.round(1000 * (this.totalDist - this.komiDist)).toString().concat("m away"));
+            this.station3EtaT = this.etaFunction(0.09730 - this.toshioDist);
           }
           else if (this.toshioDist >= 0.08830) { //at s3
             this.toshioTransit = false;
@@ -249,6 +271,7 @@ export class Tab2Page {
             this.toshio1 = false;
             this.toshio2 = false;
             this.toshio3 = true;
+            this.toshioEtaDisp3 = false;
             this.toshioD3 = "Toshio has arrived";
           }
         }
@@ -264,6 +287,7 @@ export class Tab2Page {
             this.toshio1 = false;
             this.toshio2 = false;
             this.toshio3 = true;
+            this.toshioEtaDisp3 = false;
             this.toshioD3 = "Toshio has arrived";
           }
           else if (this.toshioDist > 0.009 && this.toshioDist <= 0.03442) { //transit to s2
@@ -273,7 +297,9 @@ export class Tab2Page {
             this.toshio1 = false;
             this.toshio2 = true;
             this.toshio3 = false;
+            this.toshioEtaDisp2 = true;
             this.toshioD2 = "Toshio is ".concat(Math.round(1000 * (0.03892 - this.komiDist)).toString().concat("m away"));
+            this.station2EtaT = this.etaFunction(0.03892 - this.toshioDist);
           }
           else if (this.toshioDist > 0.03442 && this.toshioDist <= 0.04342) { //at s2
             this.toshioTransit = false;
@@ -282,6 +308,7 @@ export class Tab2Page {
             this.toshio1 = false;
             this.toshio2 = true;
             this.toshio3 = false;
+            this.toshioEtaDisp2 = false;
             this.toshioD2 = "Toshio has arrived";
           }
           else if (this.toshioDist > 0.04342 && this.toshioDist < 0.08830) { //transit to s1
@@ -291,7 +318,9 @@ export class Tab2Page {
             this.toshio1 = true;
             this.toshio2 = false;
             this.toshio3 = false;
+            this.toshioEtaDisp1 = true;
             this.toshioD1 = "Toshio is ".concat(Math.round(1000 * (this.totalDist - this.komiDist)).toString().concat("m away"));
+            this.station1EtaT = this.etaFunction(0.09730 - this.toshioDist);
           }
           else if (this.toshioDist >= 0.08830) { //at s1
             this.toshioTransit = false;
@@ -300,6 +329,7 @@ export class Tab2Page {
             this.toshio1 = true;
             this.toshio2 = false;
             this.toshio3 = false;
+            this.toshioEtaDisp1 = false;
             this.toshioD1 = "Toshio has arrived"
           }
         }
@@ -319,19 +349,15 @@ export class Tab2Page {
       }
       else if (this.komiStatus == "T1" && this.toshioStatus != "A1") {  //komi transit
         this.station1Sub = "In Transit";
-        this.station1Eta = this.etaFunction(0.097 - this.komiDist);
       }
       else if (this.komiStatus != "A1" && this.toshioStatus == "T1") {  //toshio transit
         this.station1Sub = "In Transit";
-        this.station1Eta = this.etaFunction(0.097 - this.toshioDist);
       }
       else if (this.komiStatus == "T1" && this.toshioStatus == "T1") {  //both transit
         this.station1Sub = "In Transit";
         if (this.komiDist > this.toshioDist) {
-          this.station1Eta = this.etaFunction(0.097 - this.komiDist);
         }
         else {
-          this.station1Eta = this.etaFunction(0.097 - this.toshioDist);
         }
       }
       else {  //neither arrived nor transit
@@ -359,19 +385,15 @@ export class Tab2Page {
       }
       else if (this.komiStatus == "T3" && this.toshioStatus != "A3") {  //komi transit
         this.station3Sub = "In Transit";
-        this.station3Eta = this.etaFunction(0.097 - this.komiDist);
       }
       else if (this.komiStatus != "A3" && this.toshioStatus == "T3") { //toshio transit
         this.station3Sub = "In Transit";
-        this.station3Eta = this.etaFunction(0.097 - this.toshioDist);
       }
       else if (this.komiStatus == "T3" && this.toshioStatus == "T3") {  //both transit
         this.station3Sub = "In Transit";
         if (this.komiDist > this.toshioDist) {
-          this.station3Eta = this.etaFunction(0.097 - this.komiDist);
         }
         else {
-          this.station3Eta = this.etaFunction(0.097 - this.toshioDist);
         }
       }
       else {  //neither arrived nor transit
@@ -413,7 +435,6 @@ export class Tab2Page {
 
 
   //------------------HAVERSINE FORMULA (COORDINATES TO KM)------------------------//
-  //source: https://www.geodatasource.com/developers/javascript
 
   haversineFunction(lat1, lon1, lat2, lon2) {
     if ((lat1 == lat2) && (lon1 == lon2)) {
@@ -443,13 +464,21 @@ export class Tab2Page {
     var mins = ~~((time % 3600) / 60);
     var secs = ~~time % 60;
 
-    // Output like "1:01" or "4:03:59" or "123:03:59"
+    // Output like "1m 01s" or "4:03:59" or "123:03:59"
     var ret = "";
     if (hrs > 0) {
-      ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
+      ret += "" + hrs + "h " + (mins < 10 ? "0" : "");
     }
-    ret += "" + mins + ":" + (secs < 10 ? "0" : "");
-    ret += "" + secs;
+    ret += "" + mins + "m " + (secs < 10 ? "0" : "");
+    ret += "" + secs + "s";
+    //Remove m when 0
+    if (ret.slice(0,2) == "0m") {
+      ret = ret.slice(3);
+      if (ret.slice(0,1) == "0") {
+        ret.slice(1);
+      }
+    }
+
     return ret;
   }
 

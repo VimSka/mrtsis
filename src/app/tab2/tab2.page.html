@@ -98,7 +98,8 @@
             <ion-row *ngIf="toshio1"><h3>{{toshioD1}}</h3></ion-row>
           </ion-col>
           <ion-col>
-            <ion-row *ngIf="etaDisp1"><h3>Next train in {{station1Eta}}</h3></ion-row>
+            <ion-row *ngIf="komiEtaDisp1"><h3>Komi: {{station1EtaK}}</h3></ion-row>
+            <ion-row *ngIf="toshioEtaDisp1"><h3></h3>Toshio: {{station1EtaT}}</ion-row>
           </ion-col>
         </ion-row>
 
@@ -112,7 +113,8 @@
             <ion-row *ngIf="toshio2"><h3>{{toshioD2}}</h3></ion-row>
           </ion-col>
           <ion-col>
-            <ion-row *ngIf="etaDisp2"><h3>Next train in {{station2Eta}}</h3></ion-row>
+            <ion-row *ngIf="komiEtaDisp2"><h3>Komi: {{station2EtaK}}</h3></ion-row>
+            <ion-row *ngIf="toshioEtaDisp2"><h3>Toshio: {{station2EtaT}}</h3></ion-row>
           </ion-col>
         </ion-row>
 
@@ -126,8 +128,8 @@
           <ion-row *ngIf="toshio3"><h3>{{toshioD3}}</h3></ion-row>
         </ion-col>
         <ion-col>
-          <ion-row *ngIf="etaDisp3"><h3>Next train in {{station3Eta}}</h3></ion-row>
-
+          <ion-row *ngIf="komiEtaDisp3"><h3>Komi: {{station3EtaK}}</h3></ion-row>
+          <ion-row *ngIf ="toshioEtaDisp3"><h3>Toshio: {{station3EtaT}}</h3></ion-row>
         </ion-col>
       </ion-row>
     </ion-grid>
