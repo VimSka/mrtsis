@@ -93,6 +93,7 @@ export class Tab1Page {
         console.log("station 1 lost during transit");
         this.station1Dist = this.station1Dist - this.avgSpeed;
         this.station1Function();
+        this.station1Dot = (100*this.station1Perc).toString().concat("%");
         this.station1DistDisp = Math.round(1000 * (this.station1Dist)).toString().concat("m away");
         this.station1Eta = this.etaFunction(this.station1Dist);
         console.log("station1 distance from dest is " + this.station1Dist);
@@ -102,6 +103,7 @@ export class Tab1Page {
         console.log("station 2 lost during transit");
         this.station2Dist = this.station2Dist - this.avgSpeed;
         this.station2Function();
+        this.station2Dot = (100*this.station2Perc).toString().concat("%");
         this.station2DistDisp = Math.round(1000* (this.station2Dist)).toString().concat("m away");
         this.station2Eta = this.etaFunction(this.station2Dist);
         console.log("station2 distance from dest is " + this.station2Dist);
@@ -111,6 +113,7 @@ export class Tab1Page {
         console.log("station 1 lost from start");
         this.station1Dist = this.station1Dist - this.avgSpeed;
         this.station1Function();
+        this.station1Dot = (100*this.station1Perc).toString().concat("%");
         this.station1DistDisp = Math.round(1000 * (this.station1Dist)).toString().concat("m away");
         this.station1Eta = this.etaFunction(this.station1Dist);
         console.log("station1 distance from dest is " + this.station1Dist)
@@ -120,6 +123,7 @@ export class Tab1Page {
         console.log("station 2 lost from start");
         this.station2Dist = this.station2Dist - this.avgSpeed;
         this.station2Function();
+        this.station2Dot = (100*this.station2Perc).toString().concat("%");
         this.station2DistDisp = Math.round(1000* (this.station2Dist)).toString().concat("m away");
         this.station2Eta = this.etaFunction(this.station2Dist);
         console.log("station2 distance from dest is " + this.station2Dist);
