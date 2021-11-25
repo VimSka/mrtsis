@@ -383,7 +383,7 @@ export class Tab2Page {
     }
     else if (this.komiDist > 0.009 && this.komiDist <= 0.05388) { //transit to s2
       this.komiTransit = true;
-      this.komiPerc = Math.round(100 * this.komiDist / this.totalDist)
+      this.komiPerc = Math.round(100 * this.komiDist / this.totalDist);
       this.komiStatus = "T2";
       this.komi1 = false;
       this.komi2 = true;
@@ -392,7 +392,7 @@ export class Tab2Page {
       this.komiD2 = "Komi is ".concat(Math.round(1000 * (0.053888 - this.komiDist)).toString().concat("m away"));
       this.station2EtaK = this.etaFunction(0.05388 - this.komiDist);
     }
-    else if (this.komiDist > 0.05388 && this.komiDist <= 0.06288) { //at s2
+    else if (this.komiDist > 0.05388 && this.komiDist <= 0.05888) { //at s2 
       this.komiTransit = false;
       this.komiPerc = 50;
       this.komiStatus = "A2";
@@ -403,7 +403,7 @@ export class Tab2Page {
       this.komiD2 = "Komi has arrived";
       console.log("komi arrived s2")
     }
-    else if (this.komiDist > 0.06288 && this.komiDist < 0.08830) { //transit to s3
+    else if (this.komiDist > 0.05888 && this.komiDist < 0.08830) { //transit to s3
       this.komiTransit = true;
       this.komiPerc = Math.round(100 * this.komiDist / this.totalDist);
       this.komiStatus = "T3";
