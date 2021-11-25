@@ -202,13 +202,13 @@ export class Tab2Page {
         this.komiSpeed = parseFloat(this.data.slice(this.data.length - 3, this.data.length - 1));
         // GOING RIGHT
         if (this.data.slice(0, 1) == 1) {
-          if (this.komiDist > 0.009 && this.komiDist < 0.05388 || this.komiDist > 0.06288 && this.komiDist < 0.08830) { //LOST IN TRANSIT
+          if (this.komiDist > 0.009 && this.komiDist < 0.04500 || this.komiDist > 0.05500 && this.komiDist < 0.08830) { //LOST IN TRANSIT
             this.komiDist = this.komiDist + 7/3600;
             console.log("KOMI LOST IN TRANSIT");
             console.log("Komi is going right, distance from s1 is " + this.komiDist);
             this.komiRightLogic();
           }
-          else if (this.komiDist < 0.009 && this.komiSpeed > 0 || this.komiDist >= 0.05388 && this.komiDist <= 0.06288 && this.komiSpeed > 0) { //LOST IN STATION
+          else if (this.komiDist < 0.009 && this.komiSpeed > 0 || this.komiDist >= 0.04500 && this.komiDist <= 0.05500 && this.komiSpeed > 0) { //LOST IN STATION
             this.komiDist = this.komiDist + 7/3600;
             console.log("KOMI LOST IN STATION " + this.komiStatus + ", STARTED MOVING");
             console.log("Komi is going right, distance from s1 is " + this.komiDist);
