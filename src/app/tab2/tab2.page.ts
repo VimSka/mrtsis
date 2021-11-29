@@ -102,7 +102,7 @@ export class Tab2Page {
         //publish percentage
         this.komiDisp = true;
         this.komiDotPosition = this.komiPerc.toString().concat("%");
-        console.log("Komi status is: "+this.komiStatus+"; Dot: "+this.komiDotPosition+"; Perc: "+this.komiPerc);
+        console.log("Komi status is: " + this.komiStatus + "; Dot: " + this.komiDotPosition + "; Perc: " + this.komiPerc);
       }
 
       //TOSHIO
@@ -128,7 +128,7 @@ export class Tab2Page {
         //publish percentage
         this.toshioDisp = true;
         this.toshioDotPosition = this.toshioPerc.toString().concat("%");
-        console.log("Toshio status is: "+this.toshioStatus+"; Dot: "+this.toshioDotPosition+"; Perc: "+this.toshioPerc);
+        console.log("Toshio status is: " + this.toshioStatus + "; Dot: " + this.toshioDotPosition + "; Perc: " + this.toshioPerc);
       }
 
       //-------------STATION DETAILS LOGIC----------------
@@ -203,13 +203,13 @@ export class Tab2Page {
         // GOING RIGHT
         if (this.data.slice(0, 1) == 1) {
           if (this.komiDist > 0.009 && this.komiDist < 0.04500 || this.komiDist > 0.05500 && this.komiDist < 0.08830) { //LOST IN TRANSIT
-            this.komiDist = this.komiDist + 7/3600;
+            this.komiDist = this.komiDist + 7 / 3600;
             console.log("KOMI LOST IN TRANSIT");
             console.log("Komi is going right, distance from s1 is " + this.komiDist);
             this.komiRightLogic();
           }
           else if (this.komiDist < 0.009 && this.komiSpeed > 0 || this.komiDist >= 0.04500 && this.komiDist <= 0.05500 && this.komiSpeed > 0) { //LOST IN STATION
-            this.komiDist = this.komiDist + 7/3600;
+            this.komiDist = this.komiDist + 7 / 3600;
             console.log("KOMI LOST IN STATION " + this.komiStatus + ", STARTED MOVING");
             console.log("Komi is going right, distance from s1 is " + this.komiDist);
             this.komiRightLogic;
@@ -226,15 +226,15 @@ export class Tab2Page {
         // GOING LEFT
         else if (this.data.slice(0, 1) == 0) {
           if (this.komiDist > 0.009 && this.komiDist < 0.04250 || this.komiDist > 0.05250 && this.komiDist < 0.08830) { //LOST IN TRANSIT
-            this.komiDist = this.komiDist + 7/3600;
+            this.komiDist = this.komiDist + 7 / 3600;
             console.log("KOMI LOST IN TRANSIT");
             console.log("Komi is going left, distance from s3 is " + this.komiDist);
             this.komiLeftLogic();
           }
           else if (this.komiDist < 0.009 && this.komiSpeed > 0 || this.komiDist >= 0.04250 && this.komiDist <= 0.05250 && this.komiSpeed > 0) { //LOST IN STATION
-            this.komiDist = this.komiDist + 7/3600;
+            this.komiDist = this.komiDist + 7 / 3600;
             console.log("KOMI LOST IN STATION " + this.komiStatus + ", STARTED MOVING");
-            console.log("Komi is going left, distance from s3 is "+this.komiDist);
+            console.log("Komi is going left, distance from s3 is " + this.komiDist);
             this.komiLeftLogic();
           }
           else if (this.komiDist >= 0.04250 && this.komiDist <= 0.05250 && this.komiSpeed == 0) {
@@ -248,7 +248,7 @@ export class Tab2Page {
         }
         this.komiDisp = true;
         this.komiDotPosition = this.komiPerc.toString().concat("%");
-        console.log("Komi status is: "+this.komiStatus+"; Dot: "+this.komiDotPosition+"; Perc: "+this.komiPerc);
+        console.log("Komi status is: " + this.komiStatus + "; Dot: " + this.komiDotPosition + "; Perc: " + this.komiPerc);
       }
       //TOSHIO
       else if (this.data.slice(this.data.length - 4, this.data.length - 3) == "T") {
@@ -288,7 +288,7 @@ export class Tab2Page {
           else if (this.toshioDist < 0.009 && this.toshioSpeed > 0 || this.toshioDist >= 0.04250 && this.toshioDist <= 0.05250 && this.toshioSpeed > 0) { //LOST IN STATION
             this.toshioDist = this.toshioDist + this.avgSpeed;
             console.log("TOSHIO LOST IN STATION " + this.toshioStatus + ", STARTED MOVING");
-            console.log("Toshio is going left, distance from s3 is "+this.toshioDist);
+            console.log("Toshio is going left, distance from s3 is " + this.toshioDist);
             this.toshioLeftLogic();
           }
           else if (this.toshioDist >= 0.04250 && this.toshioDist <= 0.05250 && this.toshioSpeed == 0) {
@@ -302,10 +302,10 @@ export class Tab2Page {
         }
         this.toshioDisp = true;
         this.toshioDotPosition = this.toshioPerc.toString().concat("%");
-        console.log("Toshio status is: "+this.toshioStatus+"; Dot: "+this.toshioDotPosition+"; Perc: "+this.toshioPerc);
+        console.log("Toshio status is: " + this.toshioStatus + "; Dot: " + this.toshioDotPosition + "; Perc: " + this.toshioPerc);
       }
 
-            //-------------STATION DETAILS LOGIC----------------
+      //-------------STATION DETAILS LOGIC----------------
       //A=arrived;  T=in transit;   1=station1;   2=station2;   3=station3
       //STATION 1
       if (this.komiStatus == "A1" || this.toshioStatus == "A1") {  //either arrived
@@ -363,8 +363,55 @@ export class Tab2Page {
       else {  //neither arrived nor transit
         this.station3Sub = "Awaiting";
       }
-      
+
     }
+
+    //---------------------------------------------------------------------------------------REMOVE---------------------------------------------------------------------------------------CGI
+    else if (this.algoSelector == "2") {
+      console.log("CGI");
+      //KOMI
+      if (this.data.slice(this.data.length - 4, this.data.length - 3) == "K") {
+        console.log("Komi packet received");
+        this.komiSpeed = parseFloat(this.data.slice(this.data.length - 3, this.data.length - 1));
+        this.komiPerc = parseFloat(this.data.slice(1, 4));
+        // GOING RIGHT
+        if (this.data.slice(0, 1) == 1) {
+          this.komiDist = (this.komiPerc / 100) * 0.09730;
+          console.log("CGI DIST: "+this.komiDist);
+          this.komiRightLogic();
+        }
+        // GOING LEFT
+        else if (this.data.slice(0, 1) == 0) {
+          this.komiDist = 0.09730 - ((this.komiPerc / 100) * 0.09730);
+          console.log("CGI DIST: "+this.komiDist);
+          this.komiLeftLogic();
+        }
+        this.komiDisp = true;
+        this.komiDotPosition = this.komiPerc.toString().concat("%");
+        console.log("Komi status is: " + this.komiStatus + "; Dot: " + this.komiDotPosition + "; Perc: " + this.komiPerc);
+      }
+      //TOSHIO
+      else if (this.data.slice(this.data.length - 4, this.data.length - 3) == "T") {
+        console.log("Toshio packet received");
+        this.toshioSpeed = parseFloat(this.data.slice(this.data.length - 3, this.data.length - 1));
+        this.toshioPerc = parseFloat(this.data.slice(1, 4));
+        //GOING RIGHT
+        if (this.data.slice(0, 1) == 1) {
+          this.toshioDist = (this.toshioPerc / 100) * 0.09730;
+          this.toshioRightLogic();
+        }
+        //GOING LEFT
+        else if (this.data.slice(0, 1) == 0) {
+          this.toshioDist = 0.09730 - ((this.toshioPerc / 100) * 0.09730);
+          this.toshioLeftLogic();
+        }
+        this.toshioDisp = true;
+        this.toshioDotPosition = this.toshioPerc.toString().concat("%");
+        console.log("Toshio status is: " + this.toshioStatus + "; Dot: " + this.toshioDotPosition + "; Perc: " + this.toshioPerc);
+      }
+    }
+
+
   }
 
   //------------------KOMI CONDITIONS-----------------------
@@ -390,7 +437,7 @@ export class Tab2Page {
       this.komi3 = false;
       this.komiEtaDisp2 = true;
       this.komiD2 = "Komi is ".concat(Math.round(1000 * (0.04500 - this.komiDist)).toString().concat("m away"));
-      this.station2EtaK = this.etaFunction(0.05388 - this.komiDist);
+      this.station2EtaK = this.etaFunction(0.04500 - this.komiDist);
     }
     else if (this.komiDist > 0.04500 && this.komiDist <= 0.05500) { //at s2 
       this.komiTransit = false;
@@ -447,7 +494,7 @@ export class Tab2Page {
       this.komi3 = false;
       this.komiEtaDisp2 = true;
       this.komiD2 = "Komi is ".concat(Math.round(1000 * (0.04250 - this.komiDist)).toString().concat("m away"));
-      this.station2EtaK = this.etaFunction(0.03442 - this.komiDist);
+      this.station2EtaK = this.etaFunction(0.04250 - this.komiDist);
     }
     else if (this.komiDist >= 0.04250 && this.komiDist <= 0.5250) { //at s2
       this.komiTransit = false;
@@ -562,7 +609,7 @@ export class Tab2Page {
       this.toshio3 = false;
       this.toshioEtaDisp2 = true;
       this.toshioD2 = "Toshio is ".concat(Math.round(Math.abs(1000 * (0.04250 - this.toshioDist))).toString().concat("m away"));
-      this.station2EtaT = this.etaFunction(0.03442 - this.toshioDist);
+      this.station2EtaT = this.etaFunction(0.04250 - this.toshioDist);
     }
     else if (this.toshioDist >= 0.04250 && this.toshioDist <= 0.05250) { //at s2
       this.toshioTransit = false;
