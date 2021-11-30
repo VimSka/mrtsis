@@ -363,7 +363,6 @@ export class Tab2Page {
       else {  //neither arrived nor transit
         this.station3Sub = "Awaiting";
       }
-
     }
 
     //---------------------------------------------------------------------------------------REMOVE---------------------------------------------------------------------------------------CGI
@@ -485,7 +484,7 @@ export class Tab2Page {
       this.komiEtaDisp2 = false;
       this.komiD3 = "Komi has arrived"
     }
-    else if (this.komiDist > 0.009 && this.komiDist < 0.04250) { //transit to s2
+    else if (this.komiDist > 0.009 && this.komiDist < 0.04230) { //transit to s2
       this.komiTransit = true;
       this.komiPerc = Math.round(100 * (1 - (this.komiDist / this.totalDist)));
       this.komiStatus = "T2";
@@ -493,10 +492,10 @@ export class Tab2Page {
       this.komi2 = true;
       this.komi3 = false;
       this.komiEtaDisp2 = true;
-      this.komiD2 = "Komi is ".concat(Math.round(1000 * (0.04250 - this.komiDist)).toString().concat("m away"));
+      this.komiD2 = "Komi is ".concat(Math.round(1000 * (0.04230 - this.komiDist)).toString().concat("m away"));
       this.station2EtaK = this.etaFunction(0.04250 - this.komiDist);
     }
-    else if (this.komiDist >= 0.04250 && this.komiDist <= 0.5250) { //at s2
+    else if (this.komiDist >= 0.04230 && this.komiDist <= 0.05230) { //at s2
       this.komiTransit = false;
       this.komiPerc = 50;
       this.komiStatus = "A2";
@@ -506,7 +505,7 @@ export class Tab2Page {
       this.komiEtaDisp2 = false;
       this.komiD2 = "Komi has arrived";
     }
-    else if (this.komiDist > 0.05250 && this.komiDist < 0.08830) { //transit to s1
+    else if (this.komiDist > 0.05230 && this.komiDist < 0.08830) { //transit to s1
       this.komiTransit = true;
       this.komiPerc = Math.round(100 * (1 - (this.komiDist / this.totalDist)));
       this.komiStatus = "T1";
@@ -600,7 +599,7 @@ export class Tab2Page {
       this.toshioEtaDisp2 = false;
       this.toshioD3 = "Toshio has arrived";
     }
-    else if (this.toshioDist > 0.009 && this.toshioDist < 0.04250) { //transit to s2
+    else if (this.toshioDist > 0.009 && this.toshioDist < 0.04230) { //transit to s2
       this.toshioTransit = true;
       this.toshioPerc = Math.round(100 * (1 - (this.toshioDist / this.totalDist)));
       this.toshioStatus = "T2";
@@ -608,10 +607,10 @@ export class Tab2Page {
       this.toshio2 = true;
       this.toshio3 = false;
       this.toshioEtaDisp2 = true;
-      this.toshioD2 = "Toshio is ".concat(Math.round(Math.abs(1000 * (0.04250 - this.toshioDist))).toString().concat("m away"));
-      this.station2EtaT = this.etaFunction(0.04250 - this.toshioDist);
+      this.toshioD2 = "Toshio is ".concat(Math.round(Math.abs(1000 * (0.04230 - this.toshioDist))).toString().concat("m away"));
+      this.station2EtaT = this.etaFunction(0.04230 - this.toshioDist);
     }
-    else if (this.toshioDist >= 0.04250 && this.toshioDist <= 0.05250) { //at s2
+    else if (this.toshioDist >= 0.04230 && this.toshioDist <= 0.05230) { //at s2
       this.toshioTransit = false;
       this.toshioPerc = 50;
       this.toshioStatus = "A2";
@@ -621,7 +620,7 @@ export class Tab2Page {
       this.toshioEtaDisp2 = false;
       this.toshioD2 = "Toshio has arrived";
     }
-    else if (this.toshioDist > 0.05250 && this.toshioDist < 0.08830) { //transit to s1
+    else if (this.toshioDist > 0.05230 && this.toshioDist < 0.08830) { //transit to s1
       this.toshioTransit = true;
       this.toshioPerc = Math.round(100 * (1 - (this.toshioDist / this.totalDist)));
       this.toshioStatus = "T1";
