@@ -17,6 +17,8 @@
     </ion-card-header>
     <ion-card-content *ngIf="loadingDisp1">
       <h2>Awaiting Data...</h2>
+      <h3 style="color: #b3babf">Nearest Train is 61m away</h3>
+      <h3 style="color: #b3babf">Time Remaining: 22s</h3>
     </ion-card-content>
     <ion-card-content style="color:#ffffff" *ngIf="!loadingDisp1">
       <!--station indicators-->
@@ -58,7 +60,7 @@
       </div>
       <br>
       <h3 *ngIf="station1transit" style="color: #b3babf">Nearest Train is {{station1DistDisp}}</h3>
-      <h3 *ngIf="station1transit" style="color: #b3babf">ETA: {{station1Eta}}</h3>
+      <h3 *ngIf="station1transit" style="color: #b3babf">Time Remaining: {{station1Eta}}</h3>
       <ion-icon *ngIf="!station1transit" name="checkmark-circle-outline" style="zoom:1.5;"></ion-icon>
     </ion-card-content>
   </ion-card>
@@ -113,7 +115,7 @@
       </div>
       <br>
       <h3 *ngIf="station2transit" style="color:#b3babf">Nearest Train is {{station2DistDisp}}</h3>
-      <h3 *ngIf="station2transit" style="color: #b3babf">ETA: {{station2Eta}}</h3>
+      <h3 *ngIf="station2transit" style="color: #b3babf">Time Remaining: {{station2Eta}}</h3>
       <ion-icon *ngIf="!station2transit" name="checkmark-circle-outline" style="zoom:1.5;"></ion-icon>
     </ion-card-content>
   </ion-card>

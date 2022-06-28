@@ -365,52 +365,6 @@ export class Tab2Page {
       }
     }
 
-    //---------------------------------------------------------------------------------------REMOVE---------------------------------------------------------------------------------------CGI
-    else if (this.algoSelector == "2") {
-      console.log("CGI");
-      //KOMI
-      if (this.data.slice(this.data.length - 4, this.data.length - 3) == "K") {
-        console.log("Komi packet received");
-        this.komiSpeed = parseFloat(this.data.slice(this.data.length - 3, this.data.length - 1));
-        this.komiPerc = parseFloat(this.data.slice(1, 4));
-        // GOING RIGHT
-        if (this.data.slice(0, 1) == 1) {
-          this.komiDist = (this.komiPerc / 100) * 0.09730;
-          console.log("CGI DIST: "+this.komiDist);
-          this.komiRightLogic();
-        }
-        // GOING LEFT
-        else if (this.data.slice(0, 1) == 0) {
-          this.komiDist = 0.09730 - ((this.komiPerc / 100) * 0.09730);
-          console.log("CGI DIST: "+this.komiDist);
-          this.komiLeftLogic();
-        }
-        this.komiDisp = true;
-        this.komiDotPosition = this.komiPerc.toString().concat("%");
-        console.log("Komi status is: " + this.komiStatus + "; Dot: " + this.komiDotPosition + "; Perc: " + this.komiPerc);
-      }
-      //TOSHIO
-      else if (this.data.slice(this.data.length - 4, this.data.length - 3) == "T") {
-        console.log("Toshio packet received");
-        this.toshioSpeed = parseFloat(this.data.slice(this.data.length - 3, this.data.length - 1));
-        this.toshioPerc = parseFloat(this.data.slice(1, 4));
-        //GOING RIGHT
-        if (this.data.slice(0, 1) == 1) {
-          this.toshioDist = (this.toshioPerc / 100) * 0.09730;
-          this.toshioRightLogic();
-        }
-        //GOING LEFT
-        else if (this.data.slice(0, 1) == 0) {
-          this.toshioDist = 0.09730 - ((this.toshioPerc / 100) * 0.09730);
-          this.toshioLeftLogic();
-        }
-        this.toshioDisp = true;
-        this.toshioDotPosition = this.toshioPerc.toString().concat("%");
-        console.log("Toshio status is: " + this.toshioStatus + "; Dot: " + this.toshioDotPosition + "; Perc: " + this.toshioPerc);
-      }
-    }
-
-
   }
 
   //------------------KOMI CONDITIONS-----------------------
